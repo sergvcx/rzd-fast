@@ -53,7 +53,7 @@ EndFunc   ;==>Example
 $ini       = "pass.ini"
 $section   = "sergey"
 
-$who = InputBox( "Choose Power Plan", "1: Сергей "& @CRLF & "2: Папа "& @CRLF &  "3: Мама " )
+$who = InputBox( "Choose name", "1: Сергей "& @CRLF & "2: Папа "& @CRLF &  "3: Мама " )
 
 Switch $who
 	Case 1
