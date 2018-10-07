@@ -75,7 +75,14 @@ $sex       = IniRead ( $ini, $section, "sex", "" )
 $birthday  = IniRead ( $ini, $section, "birthday", "" )
 $bonus     = IniRead ( $ini, $section, "bonus", "" )
 
+$birthDate  = StringMid ($birthday,1,2)
+$birthMonth = StringMid ($birthday,4,2)
+$birthYear  = StringMid ($birthday,7,4)
 
+;MsgBox($MB_SYSTEMMODAL, "", "The combobox is currently displaying: " & $birthday)
+;MsgBox($MB_SYSTEMMODAL, "", "The combobox is currently displaying: " & $birthDate)
+;MsgBox($MB_SYSTEMMODAL, "", "The combobox is currently displaying: " & $birthMonth)
+;MsgBox($MB_SYSTEMMODAL, "", "The combobox is currently displaying: " & $birthYear)
 
 _ClipBoard_SetData($bonus)	
 
@@ -115,7 +122,13 @@ Endif
 Send("{TAB}") 
 
 Sleep(200)
-Send($birthday) 
+Send($birthDate) 
+Sleep(200)
+Send($birthMonth) 
+Sleep(200)
+Send($birthYear) 
+
+
 Sleep(200)
 Send("{TAB}")
 Sleep(200)
@@ -131,10 +144,12 @@ Send("{TAB}")
 
 Send("{SPACE}") ; Указать номер бонусной, электронной или дорожной карты	 
 Sleep(200)
-Send("{TAB}")
+Send("{TAB}")  ; Деловой проездной
 Sleep(200)
-Send("{SPACE}") ; РЖД Бонус		
+Send("{TAB}")  ; Акции "РЖД Бонус": для пенсионеров, студентов
 Sleep(200)
+;Send("{SPACE}") ; 		
+;Sleep(200)
 
 ;Sleep(100)
 ;Send("{SPACE}")
@@ -147,14 +162,25 @@ Send("{TAB}"); Введите номер карты
 Sleep(200)
 Send($bonus)
 Sleep(200)
-Send("{TAB}") ; Акции "РЖД Бонус": для пенсионеров, студентов, по партнерским картам
+;Send("{TAB}") ; Акции "РЖД Бонус": для пенсионеров, студентов, по партнерским картам
+;Sleep(200)
+;Send("{TAB}")
 Sleep(200)
-Send("{TAB}")
+Send("{TAB}") ; От несчастных случаев (НС)
 Sleep(200)
-Send("{SPACE}")  ; От несчастных случаев (НС)
+Send("{SPACE}")  
 Sleep(200)
-Send("{TAB}")
-Send("{SPACE}") ; Медицинские расходы (МС) 
+Send("{TAB}")	; Медицинские расходы (МС) 
+Send("{SPACE}") 
+
+Sleep(200)
+
+For $y = 1 To 7 Step 1
+Send("{TAB}")	
+Sleep(200)
+Next
+
+Send("{SPACE}") 
 
 ;WinGetActiveStats, getTitle, width, height, x, y
 ;MouseGetPos, cur_x, cur_y 
