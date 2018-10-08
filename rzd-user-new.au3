@@ -180,7 +180,7 @@ Send("{TAB}")
 Sleep(200)
 Next
 
-Send("{SPACE}") 
+;Send("{SPACE}") 
 
 ;WinGetActiveStats, getTitle, width, height, x, y
 ;MouseGetPos, cur_x, cur_y 
