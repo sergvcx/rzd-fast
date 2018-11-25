@@ -93,8 +93,8 @@ $hWnd=WinGetHandle ($browser)
 $lang=_WinAPI_GetKeyboardLayout($hwnd);
 ;MsgBox($MB_SYSTEMMODAL, "", "Ru/En" & $lang )
 if $lang = $RU Then
-	;MsgBox($MB_SYSTEMMODAL, "", "Ru->En" )
-	_WinAPI_SetKeyboardLayout($EN, $hWnd)
+	MsgBox($MB_SYSTEMMODAL, "", "Ru->En" )
+	;_WinAPI_SetKeyboardLayout($EN, $hWnd)
 Endif	
 
 
@@ -114,12 +114,15 @@ Send("{TAB}")
 
 
 If $sex = "m" Then
-	Send("{DOWN}")
-	Send("{DOWN}")
+	Send("{DOWN}") 
+	Sleep(200)
+	Send("{DOWN}") 
+	Sleep(200)
 Else
 	Send("{DOWN}")
+	Sleep(200)
 Endif
-Send("{TAB}") 
+Send("{TAB}")  ; перейти к дате рождения
 
 Sleep(200)
 Send($birthDate) 
@@ -130,23 +133,30 @@ Send($birthYear)
 
 
 Sleep(200)
-Send("{TAB}")
+Send("{TAB}") ; перейти к гражданству
 Sleep(200)
-Send("{TAB}")
-Sleep(1000)
-Send("{TAB}")
-
-
+Send("{TAB}") ; перейти к типу документа 
 Sleep(200)
+Send("{TAB}")  ; перейти к номеру документа
+Sleep(200)
+
 Send($passport)
-Send("{TAB}")
-Send("{TAB}") 	 
+Sleep(200)
 
-Send("{SPACE}") ; Указать номер бонусной, электронной или дорожной карты	 
+
+Send("{TAB}")  ; перейти к тарифу
 Sleep(200)
-Send("{TAB}")  ; Деловой проездной
+
+Send("{TAB}")    ; перейти к  номеру бонусной карты 
 Sleep(200)
-Send("{TAB}")  ; Акции "РЖД Бонус": для пенсионеров, студентов
+
+Send("{SPACE}") ; поставить галку Указать номер бонусной, электронной или дорожной карты	 
+Sleep(200)
+Send("{TAB}")  ; пропустить Деловой проездной
+Sleep(200)
+Send("{TAB}")  ; пропустить Дорожная или электронная карта
+Sleep(200)
+Send("{TAB}")  ; пропустить Акции "РЖД Бонус": для пенсионеров, студентов
 Sleep(200)
 ;Send("{SPACE}") ; 		
 ;Sleep(200)
@@ -158,7 +168,7 @@ Sleep(200)
 ;Sleep(100)
 ;Send("{SPACE}")
 ;Sleep(100)
-Send("{TAB}"); Введите номер карты
+Send("{TAB}"); // Карта "РЖД-Бонус" // Введите номер карты
 Sleep(200)
 Send($bonus)
 Sleep(200)
@@ -166,12 +176,12 @@ Sleep(200)
 ;Sleep(200)
 ;Send("{TAB}")
 Sleep(200)
-Send("{TAB}") ; От несчастных случаев (НС)
+Send("{TAB}") ;  От несчастных случаев (НС)
 Sleep(200)
-Send("{SPACE}")  
+Send("{SPACE}") ; убрать галку 
 Sleep(200)
 Send("{TAB}")	; Медицинские расходы (МС) 
-Send("{SPACE}") 
+Send("{SPACE}")  ; убрать галку
 
 Sleep(200)
 
