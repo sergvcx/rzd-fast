@@ -66,7 +66,7 @@ EndSwitch
    
 $name      = IniRead ( $ini, $section, "name", "" )
 
-
+Opt("SendKeyDelay", 30)
 
 $surname   = IniRead ( $ini, $section, "surname", "" )
 $middlename= IniRead ( $ini, $section, "middlename", "" )
@@ -93,7 +93,7 @@ $hWnd=WinGetHandle ($browser)
 $lang=_WinAPI_GetKeyboardLayout($hwnd);
 ;MsgBox($MB_SYSTEMMODAL, "", "Ru/En" & $lang )
 if $lang = $RU Then
-	MsgBox($MB_SYSTEMMODAL, "", "Ru->En" )
+	;MsgBox($MB_SYSTEMMODAL, "", "Ru->En" )
 	;_WinAPI_SetKeyboardLayout($EN, $hWnd)
 Endif	
 
@@ -130,9 +130,8 @@ Sleep(200)
 Send($birthMonth) 
 Sleep(200)
 Send($birthYear) 
-
-
 Sleep(200)
+
 Send("{TAB}") ; перейти к гражданству
 Sleep(200)
 Send("{TAB}") ; перейти к типу документа 
