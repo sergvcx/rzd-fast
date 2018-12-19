@@ -30,6 +30,7 @@ $card  = StringStripWS($card, $STR_STRIPALL )
 ;Local $aNum = StringSplit($card, " ") 
 ; MsgBox($MB_SYSTEMMODAL, "", "The value of 'Title' in the section labelled 'General' is: " & $card)
 ; MsgBox($MB_SYSTEMMODAL, "", "year: " & $year)
+Opt("SendKeyDelay", 30)
 
 Sleep(200)
 Send($card) 
