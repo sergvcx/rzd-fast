@@ -3,8 +3,17 @@ WinActivate ("TW")
 
 #include <MsgBoxConstants.au3>
 #include <StringConstants.au3>
+#include <GUIConstantsEx.au3>
+#include <MsgBoxConstants.au3>
+#include <Clipboard.au3>
+#include "keyboard.au3"
 
-    
+$browser = "TW Payment Gateway"
+if WinActivate ($browser)= 0 Then
+	MsgBox($MB_SYSTEMMODAL, "", "Бразуер с РЖД не найден " )
+	exit
+Endif	
+
 ;    For $i = 1 To $aNum[0] ; Loop through the array returned by StringSplit to display the individual values.
 ;        MsgBox($MB_SYSTEMMODAL, "", "$aNum[" & $i & "] - " & $aNum[$i])
 ;    Next
@@ -26,6 +35,14 @@ $ccc   = IniRead ( $ini, $section, "ccc", "" )
 $card  = StringStripWS($card, $STR_STRIPALL )
 
 
+
+$hWnd=WinGetHandle ($browser)
+$lang=_WinAPI_GetKeyboardLayout($hwnd);
+;MsgBox($MB_SYSTEMMODAL, "", "Ru/En" & $lang )
+if $lang = $RU Then
+	MsgBox($MB_SYSTEMMODAL, "", "Ru->En" )
+	_WinAPI_SetKeyboardLayout($EN, $hWnd)
+Endif	
 
 ;Local $aNum = StringSplit($card, " ") 
 ; MsgBox($MB_SYSTEMMODAL, "", "The value of 'Title' in the section labelled 'General' is: " & $card)
